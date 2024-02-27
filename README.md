@@ -62,8 +62,8 @@ Bước 8: Chạy server Django
 
   Chạy lệnh sau để khởi động server Django:
 
-      python manage.py migrate
       python manage.py makemigrations
+      python manage.py migrate      
       python manage.py runserver
       
   Mở trình duyệt web và truy cập địa chỉ http://localhost:8000/. Bạn sẽ thấy trang web hiển thị nội dung của view my_view.
