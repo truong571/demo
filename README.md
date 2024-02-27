@@ -1,1 +1,2 @@
 # demo
+pip install django
