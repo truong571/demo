@@ -2,8 +2,13 @@
 Django Requires Python
 
   Cách cài đặt Python: https://realpython.com/installing-python/
-
+  
   Cách cài đặt Pip: https://pip.pypa.io/en/stable/installation/
+  
+  Check installed
+  
+      python --version
+      pip --version
 
 Bước 1: Cài đặt Django
 
