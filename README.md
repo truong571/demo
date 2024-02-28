@@ -7,18 +7,22 @@ Django Requires Python
   
   Check installed
   
-      python --version
-      pip --version
+    python --version
+    pip --version
 
 Bước 1: Cài đặt Django
 
   Đảm bảo bạn đã cài đặt Python 3.6 trở lên. Sau đó, cài đặt Django bằng pip:
 
-    pip install django
+    py -m pip install Django
+
+  Check installed
+
+    django-admin --version
 
 Bước 2: Tạo project Django
 
-  Mở terminal và di chuyển đến thư mục bạn muốn lưu trữ project Django. Sau đó, chạy lệnh sau:
+  Mở terminal và di chuyển đến thư mục muốn lưu trữ project Django. Sau đó, chạy lệnh sau:
 
     django-admin startproject myproject
 
@@ -31,6 +35,9 @@ Bước 3: Tạo app Django
     python manage.py startapp myapp
 
   Lệnh này sẽ tạo ra một app Django mới với tên myapp bên trong thư mục.
+
+Bước 4: Cấu hình View
+
 
 Bước 4: Cấu hình project Django
 
