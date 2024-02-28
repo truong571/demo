@@ -38,49 +38,84 @@ Bước 3: Tạo app Django
 
 Bước 4: Cấu hình View
 
+  cấu hình View trong đường dẫn myproject\myapp\views.py
 
-Bước 4: Cấu hình project Django
+    from django.http import HttpResponse
 
-  Mở file settings.py trong thư mục myproject và thêm app myapp vào danh sách INSTALLED_APPS:
+    def members(request):
+        return HttpResponse("Hello world!")
 
-    INSTALLED_APPS = [
-    ...
-    'myapp',
+Bước 5: Tạo URLS.py
+
+  Tạo urls.py trong đường dẫn myproject\myapp
+
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        path('members/', views.members, name='members'),
     ]
 
-Bước 5: Tạo model Django
+  Cấu hình trong myproject\myproject\urls.py
 
-  Mở file models.py trong thư mục myapp và tạo model Django đầu tiên:
+    from django.contrib import admin
+    from django.urls import include, path
+
+    urlpatterns = [
+        path('', include('myapp.urls')),
+        path('admin/', admin.site.urls),
+    ]
+
+Bước 5: Cấu hình Templates
+
+  Tạo folder temolates trong myproject\myapp sau đó tạo một my_template.html trong myproject\myapp\templates
+
+  Trong myproject\myapp\views.py 
+
+    from django.template import loader
+
+    def my_view(request):
+      template = loader.get_template('my_template.html')
+      return HttpResponse(template.render())
+
+  Trong myproject\myapp\urls.py
+
+    path('view/', views.my_view, name='my_view'),
+  
+  Trong myproject\myproject\settings.py thêm myapp
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'myapp',
+    ]
+
+  Sau đó chạy terminal 
+
+    py manage.py migrate
+
+Bước 6: Cấu hình Models
+
+  Trong myproject\myapp\models.py
 
     from django.db import models
 
     class MyModel(models.Model):
         name = models.CharField(max_length=255)
-        
-Bước 6: Tạo view Django
+    
+  Sau đó chạy terminal 
+    
+    py manage.py makemigrations
+    py manage.py migrate
 
-  Mở file views.py trong thư mục myapp và tạo view Django đầu tiên:
-
-    from django.shortcuts import render
-
-    def my_view(request):
-        context = {}
-        return render(request, 'my_template.html', context)
-
-Bước 7: Tạo template Django
-
-  Tạo một thư mục templates trong thư mục myapp và tạo file my_template.html bên trong:
-
-    <h1>My View</h1>
-
-    <p>This is my first Django view.</p>
-
-Bước 8: Chạy server Django
+Bước 7: Chạy server Django
 
   Chạy lệnh sau để khởi động server Django:
-
-      python manage.py makemigrations
-      python manage.py migrate      
+     
       python manage.py runserver
       
   Mở trình duyệt web và truy cập địa chỉ http://localhost:8000/. Bạn sẽ thấy trang web hiển thị nội dung của view my_view.
